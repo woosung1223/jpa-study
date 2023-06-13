@@ -15,16 +15,15 @@ public class JpaMain {
         ts.begin();
 
         try {
-            // JPA 실습
-            Member member = em.find(Member.class, 1L);
-            System.out.println(member.getName());
+            // 엔티티 생명주기 - 비영속
+            Member member = new Member();
+            member.setId(4L);
+            member.setName("테오");
 
-            // JPQL 실습
-            List<Member> resultList = em.createQuery("select m from Member as m", Member.class)
-                    .getResultList();
-            for (Member m : resultList) {
-                System.out.println(m.getName());
-            }
+            // 엔티티 생명주기 - 영속
+            System.out.println("=== BEFORE ===");
+            em.persist(member);
+            System.out.println("=== AFTER ===");
 
             ts.commit();
         } catch (Exception e) {
