@@ -15,6 +15,11 @@ public class JpaMain {
         ts.begin();
 
         try {
+            Member member = new Member();
+            Member member2 = new Member();
+            em.persist(member);
+            em.persist(member2);
+            System.out.println("===test===");
             ts.commit();
         } catch (Exception e) {
             ts.rollback();
