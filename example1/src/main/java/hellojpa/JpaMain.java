@@ -15,16 +15,6 @@ public class JpaMain {
         ts.begin();
 
         try {
-            // 엔티티 생명주기 - 비영속
-            Member member = new Member();
-            member.setId(4L);
-            member.setName("테오");
-
-            // 엔티티 생명주기 - 영속
-            System.out.println("=== BEFORE ===");
-            em.persist(member);
-            System.out.println("=== AFTER ===");
-
             ts.commit();
         } catch (Exception e) {
             ts.rollback();
