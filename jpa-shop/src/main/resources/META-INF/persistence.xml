@@ -7,6 +7,9 @@
         <class>domain.Member</class>
         <class>domain.Order</class>
         <class>domain.OrderItem</class>
+        <class>domain.Category</class>
+        <class>domain.Delivery</class>
+        <class>domain.DeliveryStatus</class>
         <class>domain.Item</class>
 
         <properties>
