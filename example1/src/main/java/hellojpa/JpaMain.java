@@ -14,21 +14,16 @@ public class JpaMain {
         ts.begin();
 
         try {
-            Team team = new Team();
-            team.setName("1팀");
-
             Member member = new Member();
-            member.setUsername("가나다");
+            member.setUsername("멤버");
 
-            team.addMember(member);
+            Locker locker = new Locker();
+            locker.setName("사물함");
+            locker.setMember(member);
 
             em.persist(member);
-            em.persist(team);
+            em.persist(locker);
 
-            Team found = em.find(Team.class, team.getId());
-            for (Member foundMember : found.getMembers()) {
-                System.out.println(foundMember.getUsername());
-            }
             ts.commit();
         } catch (Exception e) {
             ts.rollback();

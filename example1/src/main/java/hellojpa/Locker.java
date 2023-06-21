@@ -8,13 +8,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Member {
+public class Locker {
 
     @Id
     @GeneratedValue
-    @Column(name = "MEMBER_ID")
+    @Column(name = "LOCKER_ID")
     private Long id;
-    private String username;
+    private String name;
+
+    @OneToOne
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
     public Long getId() {
         return id;
@@ -24,11 +28,19 @@ public class Member {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 }
