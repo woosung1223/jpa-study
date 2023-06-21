@@ -22,8 +22,8 @@ public class JpaMain {
 
             team.addMember(member);
 
-            em.persist(team);
             em.persist(member);
+            em.persist(team);
 
             Team found = em.find(Team.class, team.getId());
             for (Member foundMember : found.getMembers()) {
