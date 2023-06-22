@@ -4,8 +4,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 public class JpaMain {
+
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
@@ -14,15 +16,17 @@ public class JpaMain {
         ts.begin();
 
         try {
-            Member member = new Member();
-            member.setUsername("멤버");
+            Album album = new Album();
+            album.setName("김앨범");
+            album.setArtist("김씨");
+            album.setPrice(1000);
 
-            Locker locker = new Locker();
-            locker.setName("사물함");
-            locker.setMember(member);
+            em.persist(album);
+            em.flush();
+            em.clear();
 
-            em.persist(member);
-            em.persist(locker);
+            Item found = em.find(Item.class, album.getId());
+            System.out.println(found.getName());
 
             ts.commit();
         } catch (Exception e) {
