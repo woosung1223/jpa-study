@@ -11,6 +11,9 @@
         <class>domain.Delivery</class>
         <class>domain.DeliveryStatus</class>
         <class>domain.Item</class>
+        <class>domain.Movie</class>
+        <class>domain.Book</class>
+        <class>domain.Album</class>
 
         <properties>
             <!-- 필수 속성 -->
