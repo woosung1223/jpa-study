@@ -23,11 +23,15 @@ public class Parent {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Child> children = new ArrayList<>();
 
     public void addChild(Child child) {
         child.setParent(this);
         children.add(child);
+    }
+
+    public void pop() {
+        children.remove(0);
     }
 }

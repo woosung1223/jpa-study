@@ -1,14 +1,9 @@
 package hellojpa;
 
-import org.hibernate.Hibernate;
-import org.hibernate.proxy.AbstractLazyInitializer;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnitUtil;
-import java.util.List;
 
 public class JpaMain {
 
@@ -33,6 +28,11 @@ public class JpaMain {
             parent.addChild(child2);
 
             em.persist(parent);
+            em.flush();
+            em.clear();
+
+            Parent foundParent = em.find(Parent.class, parent.getId());
+            em.remove(foundParent);
 
             ts.commit();
         } catch (Exception e) {
