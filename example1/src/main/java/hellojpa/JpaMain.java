@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnitUtil;
+import java.util.List;
 
 public class JpaMain {
 
@@ -19,21 +20,19 @@ public class JpaMain {
         ts.begin();
 
         try {
-            Team team = new Team();
-            team.setName("1팀");
-            em.persist(team);
+            Parent parent = new Parent();
+            parent.setName("패런트");
 
-            Member member = new Member();
-            member.setUsername("바바");
-            member.setTeam(team);
-            em.persist(member);
+            Child child1 = new Child();
+            child1.setName("차일드1");
 
-            em.flush();
-            em.clear();
+            Child child2 = new Child();
+            child2.setName("차일드2");
 
-            Member found = em.find(Member.class, member.getId());
-            System.out.println(found.getTeam().getName()); // 쿼리 안 나감!
-            System.out.println(found.getTeam().getClass()); // 실제 객체
+            parent.addChild(child1);
+            parent.addChild(child2);
+
+            em.persist(parent);
 
             ts.commit();
         } catch (Exception e) {
