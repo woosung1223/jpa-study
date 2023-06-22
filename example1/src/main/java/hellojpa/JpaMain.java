@@ -32,8 +32,8 @@ public class JpaMain {
             em.clear();
 
             Member found = em.find(Member.class, member.getId());
-            System.out.println(found.getTeam().getName()); // 쿼리 나감!
-            System.out.println(found.getTeam().getClass()); // proxy
+            System.out.println(found.getTeam().getName()); // 쿼리 안 나감!
+            System.out.println(found.getTeam().getClass()); // 실제 객체
 
             ts.commit();
         } catch (Exception e) {
