@@ -17,9 +17,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn
-public abstract class Item {
+public abstract class Item extends BaseEntity {
 
     @Id
     @GeneratedValue
