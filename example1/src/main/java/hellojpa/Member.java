@@ -6,18 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import java.time.LocalDateTime;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
     private String username;
-
-    @OneToOne(mappedBy = "member")
-    private Locker locker;
 
     public Long getId() {
         return id;
@@ -33,13 +31,5 @@ public class Member {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public Locker getLocker() {
-        return locker;
-    }
-
-    public void setLocker(Locker locker) {
-        this.locker = locker;
     }
 }
