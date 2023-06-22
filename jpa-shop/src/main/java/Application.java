@@ -14,11 +14,6 @@ public class Application {
         ts.begin();
 
         try {
-            Book book = new Book();
-            book.setName("책입니다");
-
-            em.persist(book);
-
             ts.commit();
         } catch (Exception e) {
             ts.rollback();
