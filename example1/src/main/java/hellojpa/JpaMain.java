@@ -25,7 +25,7 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            Item found = em.find(Item.class, album.getId());
+            Item found = em.find(Album.class, album.getId());
             System.out.println(found.getName());
 
             ts.commit();
