@@ -15,24 +15,10 @@ public class JpaMain {
         ts.begin();
 
         try {
-            Parent parent = new Parent();
-            parent.setName("패런트");
+            Member member = new Member();
+            member.setUsername("헬로");
 
-            Child child1 = new Child();
-            child1.setName("차일드1");
-
-            Child child2 = new Child();
-            child2.setName("차일드2");
-
-            parent.addChild(child1);
-            parent.addChild(child2);
-
-            em.persist(parent);
-            em.flush();
-            em.clear();
-
-            Parent foundParent = em.find(Parent.class, parent.getId());
-            em.remove(foundParent);
+            em.persist(member);
 
             ts.commit();
         } catch (Exception e) {
